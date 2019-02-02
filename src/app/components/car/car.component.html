@@ -1,0 +1,64 @@
+<div class="container">
+  <br>
+  <h4>
+    <mark>Авто:</mark> {{name}}
+    <small>{{model}}</small>
+  </h4>
+  <div class="alert alert-success">
+    Haracteristic car:
+    <ul>
+      <li>speed: <strong>{{speed}}</strong></li>
+      <li>color car : <strong>{{colors.car}}</strong></li>
+      <li>color salon : <strong>{{colors.salon}}</strong></li>
+      <li>color wheels : <strong>{{colors.wheels}}</strong></li>
+    </ul>
+  </div>
+
+  <h5>Edit object:</h5>
+  <div>
+  <button class="btn btn-danger"
+  (click)="showEdit()">Edit</button>
+  </div>
+  <br>
+    <form *ngIf=isEdit>
+      <div class="form-group">
+        <input type="text" placeholder="model car" class="form-control" [(ngModel)] = "model" name="model"><br>
+        <input type="text" placeholder="name car" class="form-control" [(ngModel)] = "name" name="name"><br>
+        <input type="number" placeholder="speed car" class="form-control" [(ngModel)] = "speed" name="speed"><br>
+        <input type="text" placeholder="color car" class="form-control" [(ngModel)] = "colors.car" name="car"><br>
+        <input type="text" placeholder="color salon" class="form-control" [(ngModel)] = "colors.salon" name="salon"><br>
+      </div>
+    </form>
+  <hr>
+
+
+<h5>Add:</h5>
+<form (submit)="addOpt(option.value)">
+  <div class="form-group">
+    <label for="option">Add new haracteristic</label>
+    <input type="text" id="option"
+    class="form-control" #option>
+    <br>
+    <button type="submit" class="btn btn-outline-success">Add</button>
+  </div>
+</form>
+
+  <div class="alert alert-warning">
+    <ul>
+      <li *ngFor="let opt of options; let i =index">{{i+1}} - {{opt}}
+      <button class="btn btn-warning btn-sm"
+      (click)="deleteOpt(opt)">X</button>
+      </li>
+    </ul>
+  </div>
+
+
+<h5>Select car:</h5>
+<button class="btn btn-danger"
+(click)="carSelect('bmw')">BMW</button>
+<button class="btn btn-success"
+(click)="carSelect('audi')">Audi</button>
+<button class="btn btn-info"
+(click)="carSelect('mers')">Mersedes</button>
+
+</div>
